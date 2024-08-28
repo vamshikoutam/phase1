@@ -1,0 +1,27 @@
+<form [formGroup]="meetingForm" (ngSubmit)="onSubmit()" class="border p-3">
+    <h3>Create Meeting</h3>
+    
+    <div class="mb-3">
+      <label for="clientName" class="form-label">Client Name</label>
+      <input type="text" class="form-control" id="clientName" formControlName="clientName">
+      <div *ngIf="clientName?.invalid && (clientName?.touched || clientName?.dirty)" class="text-danger">
+        <div *ngIf="clientName?.errors?.['required']">Client Name is required.</div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="meetingDate" class="form-label">Meeting Date</label>
+      <input type="date" class="form-control" id="meetingDate" formControlName="meetingDate">
+      <div *ngIf="meetingDate?.invalid && (meetingDate?.touched || meetingDate?.dirty)" class="text-danger">
+        <div *ngIf="meetingDate?.errors?.['required']">Meeting Date is required.</div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <label for="notes" class="form-label">Notes</label>
+      <textarea class="form-control" id="notes" formControlName="notes"></textarea>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="meetingForm.invalid">Submit</button>
+  </form>
+  
